@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AL-IEMAN Compressors | Since 1998</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#02070c;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    pointer-events:none;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    background:
+        radial-gradient(circle at 70% 40%,rgba(0,180,255,.18),transparent 30%),
+        radial-gradient(circle at 20% 70%,rgba(0,80,180,.15),transparent 30%),
+        linear-gradient(135deg,#02070c,#06131e 50%,#02070c);
+    transition:transform .4s ease-out;
+}
+
+.grid{
+    position:fixed;
+    width:200%;
+    height:100%;
+    left:-50%;
+    bottom:-45%;
+    z-index:-3;
+
+    background-image:
+        linear-gradient(rgba(0,190,255,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,190,255,.12) 1px,transparent 1px);
+
+    background-size:70px 70px;
+
+    transform:
+        perspective(500px)
+        rotateX(65deg);
+
+    animation:gridMove 10s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes gridMove{
+    from{background-position:0 0;}
+    to{background-position:0 700px;}
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(2,8,14,.72);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(0,210,255,.2);
+
+    z-index:100;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#00d9ff;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    color:#d5e9f3;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#00d9ff;
+    text-shadow:0 0 15px #00d9ff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:120px 7%;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    width:50%;
+    z-index:5;
+}
+
+.small-title{
+    color:#00d9ff;
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero h1{
+    margin-top:20px;
+
+    font-size:clamp(55px,8vw,115px);
+
+    line-height:.85;
+
+    background:
+        linear-gradient(
+            120deg,
+            white,
+            #6de7ff,
+            #178fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    text-shadow:
+        0 0 50px rgba(0,200,255,.2);
+}
+
+.hero p{
+    max-width:600px;
+
+    margin-top:25px;
+
+    color:#9db5c4;
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:35px;
+}
+
+.btn{
+    padding:15px 24px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border:1px solid rgba(0,210,255,.4);
+
+    background:rgba(0,80,120,.3);
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,210,255,.25);
+}
+
+.primary{
+    border:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            #0077ff,
+            #00d9ff
+        );
+}
+
+/* =========================
+   HERO IMAGE SCENE
+========================= */
+
+.compressor-scene{
+    position:absolute;
+
+    right:3%;
+    top:14%;
+
+    width:52%;
+    height:650px;
+
+    transform-style:preserve-3d;
+
+    transition:transform .25s ease-out;
+
+    perspective:1000px;
+}
+
+.hero-image{
+    position:absolute;
+
+    width:88%;
+    height:76%;
+
+    right:0;
+    top:12%;
+
+    object-fit:cover;
+
+    border-radius:30px;
+
+    opacity:.72;
+
+    border:1px solid rgba(0,220,255,.35);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.8),
+        0 0 80px rgba(0,180,255,.18);
+
+    transform:
+        perspective(1000px)
+        rotateY(-8deg)
+        translateZ(30px);
+
+    filter:
+        brightness(.62)
+        contrast(1.15)
+        saturate(.9);
+
+    transition:.5s;
+}
+
+.compressor-scene:hover .hero-image{
+    transform:
+        perspective(1000px)
+        rotateY(-3deg)
+        translateZ(60px)
+        scale(1.02);
+
+    filter:
+        brightness(.75)
+        contrast(1.15);
+}
+
+.image-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,7,12,.95),
+            transparent 45%,
+            rgba(0,40,65,.25)
+        );
+
+    z-index:2;
+    pointer-events:none;
+}
+
+/* Industrial HUD */
+
+.hud{
+    position:absolute;
+    z-index:5;
+
+    padding:12px 16px;
+
+    background:rgba(2,12,20,.8);
+
+    border:1px solid rgba(0,217,255,.35);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#8fdff0;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.hud.one{
+    top:8%;
+    right:5%;
+}
+
+.hud.two{
+    bottom:15%;
+    right:12%;
+}
+
+.hud.three{
+    top:42%;
+    left:3%;
+}
+
+.hud strong{
+    display:block;
+    color:#00d9ff;
+    font-size:16px;
+    margin-top:4px;
+}
+
+/* =========================
+   FLOATING INDUSTRIAL PARTS
+========================= */
+
+.floating-ring{
+    position:absolute;
+
+    width:110px;
+    height:110px;
+
+    border:2px solid rgba(0,210,255,.2);
+
+    border-radius:50%;
+
+    right:4%;
+    top:6%;
+
+    animation:floatRing 7s ease-in-out infinite;
+}
+
+@keyframes floatRing{
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-25px) rotate(180deg);
+    }
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section:not(.hero){
+    min-height:100vh;
+
+    padding:120px 7%;
+
+    display:flex;
+    align-items:center;
+}
+
+.panel{
+    width:100%;
+
+    padding:45px;
+
+    border-radius:25px;
+
+    background:
+        rgba(5,18,28,.72);
+
+    backdrop-filter:blur(15px);
+
+    border:
+        1px solid
+        rgba(0,210,255,.25);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.35);
+}
+
+.section-label{
+    color:#00d9ff;
+
+    letter-spacing:4px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.section-title{
+    font-size:
+        clamp(40px,6vw,75px);
+
+    margin-top:15px;
+
+    line-height:.95;
+}
+
+.description{
+    color:#91aab9;
+
+    max-width:700px;
+
+    margin-top:20px;
+
+    line-height:1.7;
+}
+
+/* =========================
+   IMAGE FEATURE
+========================= */
+
+.image-feature{
+    margin-top:45px;
+
+    display:grid;
+
+    grid-template-columns:1.3fr .7fr;
+
+    gap:20px;
+
+    min-height:430px;
+}
+
+.feature-image{
+    position:relative;
+
+    min-height:430px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    border:1px solid rgba(0,210,255,.25);
+
+    background:#06131d;
+}
+
+.feature-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+    filter:
+        brightness(.68)
+        contrast(1.1);
+}
+
+.feature-image:hover img{
+    transform:scale(1.07);
+
+    filter:
+        brightness(.82)
+        contrast(1.1);
+}
+
+.feature-text{
+    position:absolute;
+
+    left:25px;
+    bottom:25px;
+
+    z-index:2;
+}
+
+.feature-text h3{
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.feature-text p{
+    color:#c0d6df;
+
+    max-width:450px;
+
+    line-height:1.5;
+}
+
+.feature-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(2,7,12,.95)
+        );
+
+    pointer-events:none;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.card{
+    min-height:190px;
+
+    padding:0;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.35s;
+}
+
+.card-image{
+    width:100%;
+    height:145px;
+
+    object-fit:cover;
+
+    filter:
+        brightness(.62)
+        saturate(.8);
+
+    transition:.5s;
+}
+
+.card:hover .card-image{
+    transform:scale(1.06);
+
+    filter:
+        brightness(.8)
+        saturate(1);
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card:hover{
+    transform:
+        translateY(-10px)
+        rotateX(3deg);
+
+    border-color:
+        rgba(0,220,255,.5);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,180,255,.12);
+}
+
+.card-icon{
+    font-size:25px;
+}
+
+.card h3{
+    margin-top:10px;
+}
+
+.card p{
+    margin-top:8px;
+
+    color:#8fa7b6;
+
+    line-height:1.6;
+}
+
+/* =========================
+   EQUIPMENT
+========================= */
+
+.equipment-grid{
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.equipment-card{
+    position:relative;
+
+    height:280px;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    border:1px solid rgba(0,210,255,.2);
+
+    background:#06131d;
+}
+
+.equipment-card img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+        brightness(.55)
+        contrast(1.1);
+
+    transition:.6s;
+}
+
+.equipment-card:hover img{
+    transform:scale(1.08);
+
+    filter:
+        brightness(.72)
+        contrast(1.1);
+}
+
+.equipment-info{
+    position:absolute;
+
+    left:20px;
+    right:20px;
+    bottom:20px;
+
+    z-index:2;
+}
+
+.equipment-info h3{
+    font-size:23px;
+}
+
+.equipment-info p{
+    margin-top:7px;
+
+    color:#a8c1cc;
+
+    font-size:13px;
+}
+
+.equipment-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 30%,
+            rgba(2,7,12,.95)
+        );
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form{
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    padding:15px;
+
+    color:white;
+
+    background:#06131d;
+
+    border:
+        1px solid
+        #244454;
+
+    border-radius:8px;
+
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#00d9ff;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,210,255,.12);
+}
+
+textarea{
+    min-height:130px;
+
+    grid-column:1/-1;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+/* =========================
+   SMALL AI ASSISTANT
+========================= */
+
+.ai{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:300px;
+
+    z-index:200;
+
+    background:
+        rgba(3,13,21,.96);
+
+    border:
+        1px solid
+        rgba(0,220,255,.4);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.65);
+
+    transform-origin:bottom right;
+
+    transition:.3s;
+}
+
+.ai.closed{
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+}
+
+.ai.closed .ai-header{
+    height:58px;
+    padding:0;
+
+    justify-content:center;
+
+    border:0;
+}
+
+.ai.closed .ai-header strong{
+    display:none;
+}
+
+.ai.closed .ai-status{
+    display:none;
+}
+
+.ai.closed .chat,
+.ai.closed .ai-input{
+    display:none;
+}
+
+.ai-header{
+    height:48px;
+
+    padding:12px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    cursor:pointer;
+}
+
+.ai-header strong{
+    color:#00d9ff;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+}
+
+.ai-status{
+    font-size:10px;
+
+    color:#54e8a0;
+}
+
+.ai-toggle{
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,210,255,.3);
+
+    background:#061822;
+
+    color:#00d9ff;
+
+    cursor:pointer;
+}
+
+.chat{
+    height:145px;
+
+    padding:10px;
+
+    overflow:auto;
+}
+
+.message{
+    padding:8px 10px;
+
+    margin-bottom:7px;
+
+    border-radius:9px;
+
+    background:#092433;
+
+    color:#b8d1dd;
+
+    font-size:11px;
+
+    line-height:1.45;
+}
+
+.user{
+    background:#075e82;
+
+    margin-left:25px;
+
+    color:white;
+}
+
+.ai-input{
+    display:flex;
+
+    padding:8px;
+
+    gap:6px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.ai-input input{
+    padding:9px;
+
+    font-size:12px;
+}
+
+.ai-input .btn{
+    padding:9px 12px;
+}
+
+/* AI ICON */
+
+.ai-icon{
+    display:none;
+
+    font-size:23px;
+}
+
+.ai.closed .ai-icon{
+    display:block;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    width:52px;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#19c86b;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:25px;
+
+    z-index:210;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.5);
+
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.contact-item{
+    padding:25px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.contact-item span{
+    display:block;
+
+    color:#00d9ff;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:40px 7%;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:#6f8999;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding-top:130px;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .compressor-scene{
+        width:100%;
+
+        right:-35%;
+
+        opacity:.38;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .equipment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .image-feature{
+        grid-template-columns:1fr;
+    }
+
+    .feature-image{
+        min-height:350px;
+    }
+
+    .contact-box{
+        grid-template-columns:1fr;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    textarea,
+    .full{
+        grid-column:1;
+    }
+
+    .ai{
+        width:270px;
+
+        right:15px;
+        bottom:15px;
+    }
+
+    .ai.closed{
+        width:55px;
+        height:55px;
+    }
+
+    .whatsapp{
+        left:15px;
+        bottom:15px;
+
+        width:50px;
+        height:50px;
+    }
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .panel{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="background"></div>
+<div class="grid"></div>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="logo">
+AL-<span>IEMAN</span> COMPRESSORS
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#equipment">Equipment</a>
+<a href="#quote">Quote</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="small-title">
+INDUSTRIAL COMPRESSOR SOLUTIONS • SINCE 1998
+</div>
+
+<h1>
+POWERING<br>
+INDUSTRY.
+</h1>
+
+<p>
+AL-IEMAN Compressors provides compressor sales,
+repair, maintenance, installation and spare parts
+support for industries across Karachi and Pakistan.
+</p>
+
+<div class="buttons">
+
+<a class="btn primary"
+href="#services">
+EXPLORE SERVICES
+</a>
+
+<a class="btn"
+href="#quote">
+GET A QUOTE
+</a>
+
+</div>
+
+</div>
+
+
+<!-- HERO INDUSTRIAL IMAGE -->
+
+<div class="compressor-scene" id="machine">
+
+<img
+class="hero-image"
+src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1400&q=85"
+alt="Industrial engineering and machinery"
+>
+
+<div class="image-overlay"></div>
+
+<div class="hud one">
+SYSTEM
+<strong>ONLINE</strong>
+</div>
+
+<div class="hud two">
+PRESSURE
+<strong>READY</strong>
+</div>
+
+<div class="hud three">
+AL-IEMAN
+<strong>1998</strong>
+</div>
+
+<div class="floating-ring"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section id="services">
+
+<div class="panel">
+
+<div class="section-label">
+WHAT DO YOU NEED?
+</div>
+
+<h2 class="section-title">
+ENGINEERED FOR<br>
+YOUR OPERATION.
+</h2>
+
+<p class="description">
+From compressor repair and maintenance to spare parts,
+installation and compressor supply, AL-IEMAN supports
+industrial customers with practical compressor solutions.
+</p>
+
+
+<div class="image-feature">
+
+<div class="feature-image">
+
+<img
+src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=85"
+alt="Industrial engineer working with machinery"
+>
+
+<div class="feature-text">
+
+<h3>Industrial Engineering Support</h3>
+
+<p>
+Practical compressor service and technical support
+for factories and industrial operations.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80"
+alt="Industrial machinery repair"
+>
+
+<div class="card-content">
+
+<div class="card-icon">🔧</div>
+
+<h3>Compressor Repair</h3>
+
+<p>
+Troubleshooting, repair and technical support
+for different compressor types.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=900&q=80"
+alt="Industrial maintenance"
+>
+
+<div class="card-content">
+
+<div class="card-icon">⚙️</div>
+
+<h3>Maintenance</h3>
+
+<p>
+Preventive and corrective maintenance
+for industrial compressor equipment.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80"
+alt="Industrial installation"
+>
+
+<div class="card-content">
+
+<div class="card-icon">🏭</div>
+
+<h3>Installation</h3>
+
+<p>
+Industrial compressor installation and
+commissioning support.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=900&q=80"
+alt="Industrial spare parts"
+>
+
+<div class="card-content">
+
+<div class="card-icon">🔩</div>
+
+<h3>Spare Parts</h3>
+
+<p>
+Air filters, oil filters, oil separators,
+air separators, valves and components.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+alt="PLC control technology"
+>
+
+<div class="card-content">
+
+<div class="card-icon">🧠</div>
+
+<h3>PLC & Controls</h3>
+
+<p>
+PLC and compressor control component
+support.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1565600224561-5d6a8b1e8a1c?auto=format&fit=crop&w=900&q=80"
+alt="Industrial compressor equipment"
+>
+
+<div class="card-content">
+
+<div class="card-icon">💨</div>
+
+<h3>Air Compressors</h3>
+
+<p>
+Compressor supply and technical support
+for industrial applications.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     EQUIPMENT
+========================= -->
+
+<section id="equipment">
+
+<div class="panel">
+
+<div class="section-label">
+EQUIPMENT & COMPONENTS
+</div>
+
+<h2 class="section-title">
+THE COMPRESSOR<br>
+ECOSYSTEM.
+</h2>
+
+<p class="description">
+We support different industrial compressor types,
+components and control systems. Contact AL-IEMAN
+for your specific equipment requirement.
+</p>
+
+
+<div class="equipment-grid">
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1581092919535-7146ff1a5904?auto=format&fit=crop&w=1000&q=85"
+alt="Industrial compressor machinery"
+>
+
+<div class="equipment-info">
+
+<h3>Industrial Compressors</h3>
+
+<p>
+Different types of industrial air compressors.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1581092335871-4c7c8f3c2d9c?auto=format&fit=crop&w=1000&q=85"
+alt="Industrial filters and machinery"
+>
+
+<div class="equipment-info">
+
+<h3>Filters</h3>
+
+<p>
+Air filters, oil filters and filtration components.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1581091870622-3c3f4c0c3b0a?auto=format&fit=crop&w=1000&q=85"
+alt="Industrial machine components"
+>
+
+<div class="equipment-info">
+
+<h3>Oil Separators</h3>
+
+<p>
+Oil separators and air/oil separation components.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1000&q=85"
+alt="Industrial mechanical valves"
+>
+
+<div class="equipment-info">
+
+<h3>Valves</h3>
+
+<p>
+Compressor valves and replacement components.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+alt="PLC electronics and controls"
+>
+
+<div class="equipment-info">
+
+<h3>PLC Components</h3>
+
+<p>
+PLC and compressor control system components.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="equipment-card">
+
+<img
+src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1000&q=85"
+alt="Industrial engineering support"
+>
+
+<div class="equipment-info">
+
+<h3>Pakistan-wide Support</h3>
+
+<p>
+Industrial compressor services across Pakistan.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     QUOTE
+========================= -->
+
+<section id="quote">
+
+<div class="panel">
+
+<div class="section-label">
+REQUEST SERVICE / QUOTE
+</div>
+
+<h2 class="section-title">
+TELL US WHAT<br>
+YOU NEED.
+</h2>
+
+<p class="description">
+Send your compressor requirement to the AL-IEMAN team.
+</p>
+
+
+<form class="form" id="quoteForm">
+
+<input
+name="name"
+placeholder="Your Name *"
+required
+>
+
+<input
+name="company"
+placeholder="Company / Factory"
+>
+
+<input
+name="phone"
+placeholder="Phone / WhatsApp *"
+required
+>
+
+<input
+name="email"
+type="email"
+placeholder="Your Email *"
+required
+>
+
+<input
+name="industry"
+placeholder="Industry"
+>
+
+<select name="service">
+
+<option>Choose Service</option>
+
+<option>Compressor Repair</option>
+<option>Maintenance</option>
+<option>Installation</option>
+<option>Spare Parts</option>
+<option>Compressor Supply</option>
+<option>PLC / Controls</option>
+
+</select>
+
+<textarea
+name="message"
+placeholder="Describe your compressor problem or requirement..."
+></textarea>
+
+<button
+class="btn primary full"
+type="submit"
+>
+SEND REQUEST
+</button>
+
+</form>
+
+<p
+id="status"
+class="description">
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<div class="panel">
+
+<div class="section-label">
+CONTACT AL-IEMAN
+</div>
+
+<h2 class="section-title">
+LET'S KEEP<br>
+INDUSTRY MOVING.
+</h2>
+
+<p class="description">
+AL-IEMAN Compressors — serving industrial compressor
+requirements since 1998.
+</p>
+
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<span>PHONE / WHATSAPP</span>
+
+<strong>0324-1822350</strong>
+
+</div>
+
+
+<div class="contact-item">
+
+<span>EMAIL</span>
+
+<strong>
+aliemanengineereingworks@gmail.com
+</strong>
+
+</div>
+
+
+<div class="contact-item">
+
+<span>SERVICE AREA</span>
+
+<strong>
+Karachi • Pakistan-wide
+</strong>
+
+</div>
+
+</div>
+
+<br><br>
+
+<a
+class="btn primary"
+href="mailto:aliemanengineereingworks@gmail.com"
+>
+EMAIL AL-IEMAN
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/923241822350?text=Hi%20AL-IEMAN%20Compressors,%20I%20need%20help%20with%20a%20compressor."
+target="_blank"
+aria-label="Contact AL-IEMAN on WhatsApp"
+>
+☏
+</a>
+
+
+<!-- =========================
+     SMALL AI ASSISTANT
+========================= -->
+
+<div class="ai closed" id="aiBox">
+
+<div class="ai-header" id="aiHeader">
+
+<strong>
+AL-IEMAN AI
+</strong>
+
+<span class="ai-status">
+● ONLINE
+</span>
+
+<button
+class="ai-toggle"
+id="aiToggle"
+>
++
+</button>
+
+<span class="ai-icon">
+✦
+</span>
+
+</div>
+
+
+<div class="chat" id="chat">
+
+<div class="message">
+
+Hi! I'm the AL-IEMAN assistant.
+Ask me about repair, maintenance,
+spare parts, installation or compressors.
+
+</div>
+
+</div>
+
+
+<div class="ai-input">
+
+<input
+id="aiInput"
+placeholder="Ask AI..."
+>
+
+<button
+class="btn"
+id="aiButton"
+>
+➤
+</button>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© <span id="year"></span>
+AL-IEMAN Compressors.
+All rights reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   MOUSE 3D PARALLAX
+========================= */
+
+const machine =
+document.getElementById("machine");
+
+const background =
+document.querySelector(".background");
+
+document.addEventListener(
+"mousemove",
+function(e){
+
+const x =
+(e.clientX / window.innerWidth - .5);
+
+const y =
+(e.clientY / window.innerHeight - .5);
+
+if(machine){
+
+machine.style.transform = `
+translate3d(${x * 45}px,${y * 30}px,0)
+rotateY(${x * 8}deg)
+rotateX(${-y * 5}deg)
+`;
+
+}
+
+background.style.transform =
+`translate(${x * -12}px,${y * -8}px)`;
+
+});
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+const canvas =
+document.getElementById("particles");
+
+const ctx =
+canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas(){
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+particles = [];
+
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+size:Math.random()*2+0.5,
+
+speed:Math.random()*.5+.1
+
+});
+
+}
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+
+function animateParticles(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+particles.forEach(p=>{
+
+p.y -= p.speed;
+
+if(p.y < 0)
+p.y = canvas.height;
+
+ctx.beginPath();
+
+ctx.arc(
+p.x,
+p.y,
+p.size,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle =
+"rgba(80,210,255,.45)";
+
+ctx.fill();
+
+});
+
+requestAnimationFrame(
+animateParticles
+);
+
+}
+
+animateParticles();
+
+
+/* =========================
+   QUOTE EMAIL
+========================= */
+
+document
+.getElementById("quoteForm")
+.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+const form =
+new FormData(this);
+
+let body = "";
+
+for(
+const [key,value]
+of form.entries()
+){
+
+body +=
+`${key}: ${value}\n`;
+
+}
+
+const subject =
+encodeURIComponent(
+"AL-IEMAN Compressors Website Inquiry"
+);
+
+const message =
+encodeURIComponent(body);
+
+window.location.href =
+`mailto:aliemanengineereingworks@gmail.com?subject=${subject}&body=${message}`;
+
+document.getElementById("status")
+.textContent =
+"Your email request has been prepared. Your email application will open so you can send it.";
+
+}
+);
+
+
+/* =========================
+   AL-IEMAN PROFESSIONAL AI ASSISTANT
+   Technical knowledge base + safe response engine
+========================= */
+
+const input = document.getElementById("aiInput");
+const chat = document.getElementById("chat");
+const button = document.getElementById("aiButton");
+const aiBox = document.getElementById("aiBox");
+const aiHeader = document.getElementById("aiHeader");
+const aiToggle = document.getElementById("aiToggle");
+
+function toggleAI(){
+  aiBox.classList.toggle("closed");
+  aiToggle.textContent = aiBox.classList.contains("closed") ? "+" : "−";
+  if(!aiBox.classList.contains("closed")) setTimeout(()=>input.focus(),150);
+}
+
+aiHeader.addEventListener("click", function(e){
+  if(e.target === aiToggle || e.target === aiHeader) toggleAI();
+});
+
+aiToggle.addEventListener("click", function(e){
+  e.stopPropagation();
+  toggleAI();
+});
+
+function addMessage(text, user=false){
+  const div = document.createElement("div");
+  div.className = user ? "message user" : "message";
+  div.textContent = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+const TECH = {
+  company: "AL-IEMAN Compressors has served industrial compressor requirements since 1998. We provide compressor repair, maintenance, supply, installation, spare parts, valves and PLC/control support in Karachi and across Pakistan.",
+  contact: "For professional mechanical or electrical assistance, please contact the AL-IEMAN Compressors team at 0324-1822350 (Phone / WhatsApp). Email: aliemanengineereingworks@gmail.com.",
+  safety: "For service work, isolate electrical and stored-pressure energy before opening equipment and use appropriate Lockout/Tagout procedures. Never bypass safety interlocks or pressure-relief devices. Electrical work should be performed by a qualified technician.",
+
+  types: {
+    reciprocating: "A reciprocating compressor uses a piston, cylinder, crankshaft and connecting rod. On the downstroke, the intake valve opens and air enters; on the upstroke, the air is compressed and the discharge valve opens. It can be single- or multi-stage, single- or double-acting, and oil-lubricated or oil-free. It is well suited to intermittent and higher-pressure duty.",
+    screw: "A rotary screw compressor uses two intermeshing helical rotors (male and female). Air is trapped between the rotors and compressed continuously as the trapped volume decreases. Oil-injected versions use oil for lubrication, cooling and sealing; oil-free versions use a different compression design. Screw compressors are common for continuous industrial duty.",
+    vane: "A rotary vane compressor uses an eccentric rotor with sliding vanes. The vanes form air pockets whose volume decreases as the rotor turns, producing compression.",
+    scroll: "A scroll compressor uses interleaving spiral scrolls. One scroll is fixed while the other orbits, progressively reducing trapped air pockets toward the center. Scroll compressors are typically quiet and often oil-free.",
+    diaphragm: "A diaphragm compressor uses a flexible diaphragm to separate the gas from the mechanical drive. It is useful where oil-free gas compression or process-gas cleanliness is important.",
+    liquidring: "A liquid-ring compressor uses a rotating impeller and a liquid ring to form compression chambers. It is commonly used for process gas handling and vacuum-related service.",
+    centrifugal: "A centrifugal compressor uses a high-speed impeller to increase air velocity, then a diffuser converts velocity into pressure. Large machines may have multiple stages, intercoolers, bearings, seals and inlet guide vanes. They are used for high-volume continuous service.",
+    axial: "An axial compressor moves air along the shaft through rows of rotating and stationary blades. It is a high-flow, high-speed design used mainly in specialized large-scale systems and aviation rather than ordinary plant air."
+  },
+
+  parts: {
+    universal: "Common compressor components include inlet air filters, pressure switches/transducers, gauges, regulators, safety relief valves, check valves, unloaders, motors, starters, belts, couplings, receiver tanks, drain valves, aftercoolers, moisture separators, dryer filters, gaskets, O-rings and vibration pads.",
+    screw: "Rotary-screw spare parts can include the air-end, male/female rotors, bearings, shaft seals, oil separator, oil filter, air filter, oil cooler, inlet/suction valve, unloader, minimum-pressure valve, thermostatic valve, scavenge components and compressor oil.",
+    piston: "Reciprocating spare parts can include pistons, piston rings, cylinders/liners, valve plates, reed or disc valves, springs, connecting rods, wrist pins, crankshafts, bearings, head gaskets, unloader kits and rebuild kits.",
+    centrifugal: "Centrifugal compressor components can include impellers, diffusers, inlet guide vanes, journal/thrust bearings, labyrinth or dry-gas seals where applicable, coolers and moisture separators. Maintenance is often condition-based.",
+    filters: "Air filters remove particles from inlet air. Oil filters remove contaminants from compressor oil. Oil separator elements separate oil from compressed air in oil-injected screw compressors. Coalescing filters remove oil aerosols/fine particles, while activated-carbon filters may be used for oil vapour/odour control in suitable applications.",
+    valves: "Compressor valve categories include inlet/intake valves, suction and discharge valves, check valves, safety relief valves, unloader valves, minimum-pressure valves, solenoid valves and thermostatic/control valves. Correct selection depends on compressor model, pressure, temperature, connection, medium and part specification."
+  },
+
+  plc: "A PLC (Programmable Logic Controller) reads sensors such as pressure transducers, temperature sensors, oil-pressure switches, vibration sensors, motor-current signals and interlocks, then controls outputs such as motor starters, VFDs, load/unload solenoids, inlet valves, cooling fans, drain valves and alarms. Typical functions include start/stop sequencing, safety permissives, pressure control, load/unload or modulation, multi-compressor lead/lag, runtime equalization, alarm handling, condensate drains and HMI/SCADA communication.",
+  plcBrands: "Common industrial PLC families include Siemens S7-1200/S7-1500 and Rockwell Automation/Allen-Bradley families such as MicroLogix, CompactLogix and ControlLogix. Other PLC platforms also exist. PLCs are not automatically interchangeable; CPU, I/O, voltage, communication, program, memory, expansion, HMI, firmware, wiring and safety requirements must be checked.",
+  hmi: "An HMI (Human Machine Interface) lets an operator view pressure, temperature, running status, load/unload status, alarms, runtime, service hours, setpoints and operating mode, and may provide control functions depending on the system.",
+  vfd: "A VFD (Variable Frequency Drive) controls motor speed. In suitable compressor systems it can provide variable output, improved pressure control and potential energy savings under variable demand. Selection must consider motor power, voltage, current, frequency, compressor application, duty cycle, control method, harmonics and cooling.",
+  oil: "Compressor oils may include mineral, PAO, ester and food-grade types where required. The correct oil must be selected from the compressor manufacturer's specification and operating conditions. Never choose oil only from horsepower. Wrong oil can contribute to wear, deposits, high temperature, oil carry-over, seal problems and failure.",
+
+  troubleshooting: {
+    start: "A compressor that will not start may have a tripped breaker/overload, fuse or phase problem, low control voltage, emergency stop/interlock, PLC/HMI fault, pressure switch issue, starter problem, unloader problem or mechanical seizure. Check the exact alarm/fault code and electrical status first; do not repeatedly reset a protection trip without finding the cause.",
+    pressure: "Low pressure or low flow can result from plant-side leaks/high demand/undersized piping, or machine-side problems such as a dirty inlet filter, inlet valve restriction, worn piston rings/valves, screw separator restriction, air-end wear or centrifugal impeller problems. Compare pressure at the compressor with pressure at the point of use.",
+    temperature: "High discharge temperature can be caused by dirty coolers, restricted airflow, poor ventilation, high ambient temperature, low or incorrect oil, a faulty thermostatic valve, cooling-fan problems or excessive loading. Check the oil level/specification, cooler condition and ventilation.",
+    vibration: "Excessive vibration or noise can be associated with loose mounting, foundation issues, coupling misalignment, belt problems, bearing wear, imbalance, mechanical damage, cylinder problems or air-end issues. A qualified technician should inspect abnormal vibration before continued operation.",
+    oilcarry: "Oil carry-over can be caused by a failed/blinded separator, blocked scavenge line, overfilled or incorrect oil, worn rings or seal problems. Verify the compressor design and separator system before replacing parts.",
+    water: "Water in compressed air can result from poor condensate drainage, failed drains, insufficient cooling, high humidity, dryer problems or an undersized dryer. Check drains, aftercooling and the air-treatment system.",
+    current: "High motor current/overload can result from low voltage, phase imbalance, mechanical drag, tight belts, bearing problems, starting against pressure, incorrect VFD parameters, high discharge pressure or cooling problems.",
+    safetyvalve: "A safety valve lifting may indicate actual over-pressure, an incorrect setting, an inlet/minimum-pressure valve problem, separator restriction or a control fault. Do not block, adjust or bypass a safety valve without qualified assessment."
+  }
+};
+
+function hasAny(t, words){ return words.some(w => t.includes(w)); }
+
+function detailedIfAsked(t, short, detail){
+  return hasAny(t,["detail","detailed","describe","explain","deep","more information","how does it work","how it works","in detail"]) ? detail : short;
+}
+
+function partRecommendation(t){
+  const asksPart = hasAny(t,["which part","what part","recommend a part","recommend","suggest","which valve","which plc","which oil","which filter","what filter","what oil"]);
+  if(!asksPart) return null;
+
+  if(t.includes("oil")) return "I can help select the oil, but the correct grade must be verified from the compressor manufacturer's specification. Please send the compressor brand, model, current oil specification if known, operating temperature and duty cycle. I would not recommend an oil based only on horsepower.";
+  if(t.includes("plc")) return "For a PLC recommendation, please provide the compressor brand/model, existing PLC and I/O details, control voltage, communication protocol, HMI/VFD details and a photo of the control panel or nameplate if possible. A Siemens or Allen-Bradley PLC is not automatically a drop-in replacement for another controller.";
+  if(t.includes("filter")) return "For the correct filter, please provide the compressor brand/model and, if available, the existing filter part number or a clear photo. Filter selection should match flow, pressure rating and manufacturer specification—not just physical dimensions.";
+  if(t.includes("valve")) return "For a valve recommendation, please provide the compressor type, brand/model, existing valve or part number, pressure, temperature, connection size and application. The correct valve depends on these specifications, so I do not want to suggest an incompatible part.";
+  return "Yes, I can help identify a suitable compressor spare part. Please send the compressor type, brand, model/serial number, required part or fault, and a photo/nameplate if available. I can then explain what the part does and what specifications should be verified.";
+}
+
+function AIReply(text){
+  const t = text.toLowerCase().trim();
+  let answer;
+
+  const recommendation = partRecommendation(t);
+  if(recommendation){
+    answer = recommendation;
+  } else if(hasAny(t,["hello","hi","hey","assalam","salam","good morning","good afternoon","good evening"])){
+    answer = "Hello, and welcome to AL-IEMAN Compressors. I’m your technical assistant for industrial compressors, spare parts, PLC/control systems, maintenance and troubleshooting. How may I assist you today?";
+  } else if(hasAny(t,["who are you","about al-ieman","about al ieman","company","al-ieman","alieman"])){
+    answer = detailedIfAsked(t, TECH.company, TECH.company + "\n\nOur support covers mechanical and electrical compressor requirements, including spare parts, valves, filters, oil, PLCs, HMIs and control systems.");
+  } else if(hasAny(t,["reciprocating","piston compressor","piston"])){
+    answer = detailedIfAsked(t, TECH.types.reciprocating, TECH.types.reciprocating + "\n\nCommon parts: pistons, rings, cylinders/liners, valve plates, reeds/discs, springs, connecting rods, wrist pins, crankshaft, bearings, head gaskets and rebuild kits. Common problems include low pressure, high temperature, worn valves/rings, vibration and oil carry-over.");
+  } else if(hasAny(t,["rotary screw","screw compressor","screw"])){ 
+    answer = detailedIfAsked(t, TECH.types.screw, TECH.types.screw + "\n\nCommon parts include air-end components, oil separator, oil filter, air filter, oil cooler, inlet/unloader valve, minimum-pressure valve, thermostatic valve and seals.");
+  } else if(hasAny(t,["rotary vane","vane compressor"])){ answer = detailedIfAsked(t, TECH.types.vane, TECH.types.vane); }
+  else if(hasAny(t,["scroll compressor","scroll"])){ answer = detailedIfAsked(t, TECH.types.scroll, TECH.types.scroll); }
+  else if(hasAny(t,["diaphragm compressor","diaphragm"])){ answer = detailedIfAsked(t, TECH.types.diaphragm, TECH.types.diaphragm); }
+  else if(hasAny(t,["liquid ring","liquid-ring"])){ answer = detailedIfAsked(t, TECH.types.liquidring, TECH.types.liquidring); }
+  else if(hasAny(t,["centrifugal compressor","centrifugal"])){ answer = detailedIfAsked(t, TECH.types.centrifugal, TECH.types.centrifugal + "\n\nTypical components include impellers, diffusers, inlet guide vanes, bearings, seals, coolers and moisture separators."); }
+  else if(hasAny(t,["axial compressor","axial"])){ answer = detailedIfAsked(t, TECH.types.axial, TECH.types.axial); }
+  else if(hasAny(t,["spare part","spare parts","parts","component"])){ answer = detailedIfAsked(t, TECH.parts.universal, TECH.parts.universal + "\n\nFor screw compressors: " + TECH.parts.screw + "\n\nFor reciprocating compressors: " + TECH.parts.piston + "\n\nFor centrifugal compressors: " + TECH.parts.centrifugal); }
+  else if(hasAny(t,["filter","air filter","oil filter","separator","coalescing","carbon filter"])){ answer = detailedIfAsked(t, TECH.parts.filters, TECH.parts.filters + "\n\nFor an exact replacement, please provide the compressor brand/model and current part number or photo."); }
+  else if(hasAny(t,["valve","inlet valve","discharge valve","unloader","minimum pressure"])){ answer = detailedIfAsked(t, TECH.parts.valves, TECH.parts.valves + "\n\nExact valve selection requires the compressor brand/model, pressure, temperature, connection and existing part information."); }
+  else if(hasAny(t,["plc","programmable logic","controller","control system"])){ answer = detailedIfAsked(t, TECH.plc, TECH.plc + "\n\n" + TECH.plcBrands); }
+  else if(hasAny(t,["siemens","s7-1200","s7-1500","allen-bradley","allen bradley","rockwell","compactlogix","controllogix","micrologix"])){ answer = TECH.plcBrands + "\n\nIf you want a replacement recommendation, please send the existing PLC model, I/O list, voltage, communication details and compressor controller information."; }
+  else if(hasAny(t,["hmi","human machine interface"])){ answer = detailedIfAsked(t, TECH.hmi, TECH.hmi + "\n\nThe HMI should match the controller, communication protocol, screen requirements and plant control architecture."); }
+  else if(hasAny(t,["vfd","variable frequency","drive"])){ answer = detailedIfAsked(t, TECH.vfd, TECH.vfd + "\n\nFor selection, send motor kW/HP, voltage, current, frequency, compressor model and control requirements."); }
+  else if(hasAny(t,["oil","lubricant","lubrication"])){ answer = detailedIfAsked(t, TECH.oil, TECH.oil + "\n\nIf you send the compressor brand/model and current oil specification, I can help you understand what needs to be verified before changing oil."); }
+  else if(hasAny(t,["won't start","will not start","not starting","doesn't start","no start","start problem"])){ answer = TECH.troubleshooting.start + "\n\nPlease send the compressor brand/model and exact alarm or fault code if available."; }
+  else if(hasAny(t,["low pressure","low flow","not building pressure","pressure low"])){ answer = TECH.troubleshooting.pressure + "\n\nPlease tell me the compressor type, current pressure, target pressure and brand/model if known."; }
+  else if(hasAny(t,["high temperature","overheating","hot compressor","temperature high"])){ answer = TECH.troubleshooting.temperature + "\n\nPlease share the compressor type, brand/model and discharge temperature if available."; }
+  else if(hasAny(t,["vibration","vibrating","noise","noisy","loud"])){ answer = TECH.troubleshooting.vibration + "\n\nIf the vibration is sudden or severe, stop the machine safely and arrange qualified inspection."; }
+  else if(hasAny(t,["oil carry","oil in air","oil carryover","oil coming in air"])){ answer = TECH.troubleshooting.oilcarry; }
+  else if(hasAny(t,["water in air","wet air","moisture","water problem"])){ answer = TECH.troubleshooting.water; }
+  else if(hasAny(t,["overload","high current","motor current","amps high"])){ answer = TECH.troubleshooting.current; }
+  else if(hasAny(t,["safety valve","relief valve lifting","pressure relief"])){ answer = TECH.troubleshooting.safetyvalve + "\n\n" + TECH.safety; }
+  else if(hasAny(t,["repair","broken","fault","fault code","problem","maintenance","service","installation","install","repairing"])){ answer = "I can help narrow down the issue. Please provide the compressor brand, model, compressor type, exact symptom or alarm code, operating pressure/temperature if available, and when the problem started. If the issue involves electrical controls or mechanical inspection, our team can assist at 0324-1822350."; }
+  else if(hasAny(t,["price","quote","cost","quotation"])){ answer = "Certainly. For a quotation, please provide your name, company, phone/WhatsApp, compressor brand/model, required service or part, quantity and location. Our team can review the requirement. You can also use the Request Quote form on this website."; }
+  else if(hasAny(t,["contact","phone","whatsapp","number","engineer","mechanical department","electrical department"])){ answer = TECH.contact; }
+  else if(hasAny(t,["safety","lockout","loto","danger"])){ answer = TECH.safety; }
+  else {
+    answer = "I’ll be happy to help with industrial compressors, compressor types, spare parts, filters, oil, valves, PLCs, HMIs, VFDs, maintenance and troubleshooting. If your question is about a specific machine, please send its brand/model and the exact issue. If I cannot reliably answer your question, please contact our Mechanical/Electrical Department at 0324-1822350.";
+  }
+
+  setTimeout(()=>addMessage(answer),450);
+}
+
+function sendAI(){
+  const text = input.value.trim();
+  if(!text) return;
+  addMessage(text,true);
+  input.value="";
+  AIReply(text);
+}
+
+button.addEventListener("click",sendAI);
+input.addEventListener("keydown",e=>{ if(e.key==="Enter") sendAI(); });
+
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById("year")
+.textContent =
+new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
